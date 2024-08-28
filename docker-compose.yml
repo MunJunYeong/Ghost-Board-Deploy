@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend:/app  # 호스트의 소스 디렉토리를 컨테이너에 마운트
+    environment:
+      - NODE_ENV=production
+
+  backend:
+    container_name: backend
+    build: ./backend
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./backend:/app  # 호스트의 소스 디렉토리를 컨테이너에 마운트
+    environment:
+      - NODE_ENV=production
