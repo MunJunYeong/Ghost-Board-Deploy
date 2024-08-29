@@ -1,30 +1,45 @@
 # Ghost Board Repository
 
-이 리포지토리는 Linux 환경을 기반으로 하여 개발되었습니다. 아래의 안내에 따라 개발 환경을 설정하세요.
+이 리포지토리는 Linux 환경을 기반으로 하여 개발 환경 구축, 배포 환경 구축을 위해 개발 되었습니다. 아래의 안내에 따라 개발 환경을 설정하세요.
 
-## 개발 환경 설정 스크립트: `develop.sh`
+## 개발 환경 설정
+아래 설치 스크립트 중 필요 항목을 알맞게 실행
+### docker install
+```
+chmod +x ./tools/install-docker.sh
+```
 
-`develop.sh` 스크립트는 개발 환경을 빠르고 쉽게 설정하기 위한 도구입니다. 이 스크립트는 프로젝트의 FE/BE Repository를 자동으로 클론하고, 최신 변경 사항을 가져오며, 필요한 종속성을 설치합니다.
+### docker-compose install
+```
+chmod +x ./tools/install-docker-compose.sh
+```
 
-### 주요 기능
+### FE/BE setting
+```
+chmod +x ./install-docker-compose.sh
+```
+- git 설정 (username, email)을 하기 위해서는 파일의 아래 내용을 수정 해주세요.
+  ```
+  set_git_config=true
+  GIT_USERNAME="사용자 입력"
+  GIT_EMAIL="사용자 입력"
+  ```
 
-- git clone
-- npm/yarn dependency install
-- git config
+### DB setting
+`PostgreSQL`과 `Redis` 서버를 로컬에 설치하지 않고 Docker를 통해 실행하려면, 아래 명령어를 사용하세요.
+```
+docker-compose -f docker-db-compose.yml up -d
+```
 
-### 사용 방법
 
-1. 스크립트를 실행하여 개발 환경을 설정합니다:
 
-    ```bash
-    chmod -x develop.sh
-    ./develop.sh
-    ```
 
-2. `set_git_config` flag를 통해 각 리포지토리의 Git 설정을 로컬로 관리할 수 있습니다. Global 설정을 원하지 않거나, 각 리포지토리마다 다른 Git 설정을 사용하고자 할 경우, `develop.sh` 스크립트에서 `set_git_config` 값을 `true`로 설정하세요.
+## 배포 환경 구조
+TODO
+### DB server
+- Postgresql
+- Redis
 
-    ```bash
-    set_git_config=true
-    GIT_USERNAME="사용자 입력"
-    GIT_EMAIL="사용자 입력"
-    ```
+### Application server
+- Frontend
+- Backend 
