@@ -6,17 +6,20 @@
 아래 설치 스크립트 중 필요 항목을 알맞게 실행
 ### docker install
 ```
-chmod +x ./tools/install-docker.sh
+$ chmod +x ./tools/install-docker.sh
+$ ./tools/install-docker.sh
 ```
 
 ### docker-compose install
 ```
-chmod +x ./tools/install-docker-compose.sh
+$ chmod +x ./tools/install-docker-compose.sh
+$ ./tools/install-docker-compose.sh
 ```
 
 ### FE/BE setting
 ```
-chmod +x ./install-docker-compose.sh
+chmod +x ./set-develop-repo.sh
+$ ./set-develop-repo.sh
 ```
 - git 설정 (username, email)을 하기 위해서는 파일의 아래 내용을 수정 해주세요.
   ```
