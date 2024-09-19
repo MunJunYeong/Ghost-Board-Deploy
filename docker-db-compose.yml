@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   secret-postgres:
-    image: postgres:13
+    image: postgres:15.7-alpine
     container_name: secret-postgres
     environment:
       POSTGRES_USER: postgres
@@ -14,6 +14,8 @@ services:
       - postgres-data:/var/lib/postgresql/data
     networks:
       - db-network
+    # restart when docker daemon restarts
+    restart: unless-stopped
 
   secret-redis:
     image: redis:6
@@ -25,6 +27,8 @@ services:
       - redis-data:/data
     networks:
       - db-network
+    # restart when docker daemon restarts
+    restart: unless-stopped
 
 networks:
   db-network:
